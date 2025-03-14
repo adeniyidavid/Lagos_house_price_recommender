@@ -13,7 +13,7 @@ df = pd.read_csv("clean_data.csv")
 def recommend_neighborhoods(price):
     price_scaled = scaler.transform([[price]])
     distances, indices = model.kneighbors(price_scaled)
-    return df.loc[indices[0], ["Address", "Neighborhood", "Price"]].reset_index(drop=True)
+    return df.loc[indices[0], ["Address", "Neighborhood", "Bedrooms", "Property_Type", "Price"]].reset_index(drop=True)
 
 # Streamlit UI
 st.title("Lagos House Price Neighborhood Recommender")
